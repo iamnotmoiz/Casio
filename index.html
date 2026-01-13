@@ -1,451 +1,1119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moiz Janjua | Casio UK Operations Strategy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
-
-    :root {
-      --casio-blue: #005596;
-      --casio-dark: #121212;
-      --casio-accent: #00a0e9;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0a0a;
-      color: #e2e8f0;
-      overflow-x: hidden;
-    }
-
-    .mono { font-family: 'JetBrains+Mono', monospace; }
-
-    .glass-nav {
-      background: rgba(10, 10, 10, 0.7);
-      backdrop-filter: blur(28px) saturate(170%);
-      -webkit-backdrop-filter: blur(28px) saturate(170%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .hero-mesh {
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(0, 85, 150, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(0, 160, 233, 0.1) 0px, transparent 50%);
-    }
-
-    .timeline-node { position: relative; }
-    .timeline-node::before {
-      content: '';
-      position: absolute;
-      left: -25px;
-      top: 24px;
-      width: 12px;
-      height: 12px;
-      background: var(--casio-blue);
-      border: 3px solid #0a0a0a;
-      border-radius: 50%;
-      z-index: 2;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .detail-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-      opacity: 0;
-    }
-    .detail-content.expanded {
-      max-height: 600px;
-      opacity: 1;
-      padding-top: 1.5rem;
-      padding-bottom: 1rem;
-    }
-
-    .logo-container {
-      width: 52px;
-      height: 52px;
-      background: white;
-      border-radius: 10px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    .casio-btn {
-      background: linear-gradient(135deg, var(--casio-blue), var(--casio-dark));
-      border: 1px solid rgba(255,255,255,0.1);
-      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    }
-
-    .status-chip {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-  </style>
-</head>
-<body class="hero-mesh">
-
-  <nav class="glass-nav fixed w-full z-50 top-0">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="px-3 py-1 bg-white text-black font-black tracking-tighter text-xl">CASIO</div>
-        <div class="h-6 w-px bg-white/20 hidden sm:block"></div>
-        <span class="text-sm font-bold tracking-[0.2em] uppercase hidden sm:block opacity-70">Operations Management</span>
-      </div>
-      <div class="hidden md:flex gap-10 font-bold text-xs uppercase tracking-widest">
-        <a href="#experience" class="hover:text-casio-accent transition-colors">Timeline</a>
-        <a href="#performance" class="hover:text-casio-accent transition-colors">Performance</a>
-        <a href="#edu" class="hover:text-casio-accent transition-colors">Credentials</a>
-      </div>
-      <a href="mailto:moizjanjua@icloud.com" class="casio-btn px-8 py-2 text-white font-bold text-xs tracking-widest uppercase hover:opacity-80 transition-all">
-        Contact
-      </a>
-    </div>
-  </nav>
-
-  <section class="pt-48 pb-24 px-6">
-    <div class="max-w-5xl mx-auto">
-      <div class="mono text-casio-accent text-sm mb-4 reveal uppercase tracking-[0.3em]">Scalability / Efficiency / Accuracy</div>
-      <h1 class="text-6xl md:text-8xl font-black text-white leading-none mb-8 reveal">
-        MOIZ <br><span class="text-transparent" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3)">JANJUA</span>
-      </h1>
-      <p class="text-lg text-slate-400 leading-relaxed border-l-2 border-casio-blue pl-6 max-w-2xl reveal mb-10">
-        Precision-oriented operations specialist with extensive experience in fast-paced logistics and technical onboarding. Driving excellence through data-backed process improvement.
-      </p>
-
-      <!-- Location, Expertise, Availability -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 reveal">
-        <div class="status-chip">
-          <i class="fa-solid fa-location-dot text-casio-accent"></i>
-          <div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Location</div>
-            <div class="text-sm font-bold text-white">Watford, UK</div>
-          </div>
-        </div>
-        <div class="status-chip">
-          <i class="fa-solid fa-microchip text-casio-accent"></i>
-          <div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Expertise</div>
-            <div class="text-sm font-bold text-white">Ops / Fintech / UX</div>
-          </div>
-        </div>
-        <div class="status-chip border-casio-accent/30 bg-casio-accent/5">
-          <i class="fa-solid fa-calendar-check text-casio-accent"></i>
-          <div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Availability</div>
-            <div class="text-sm font-bold text-white">Immediate / Full-time</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Professional Chronology -->
-  <section id="experience" class="py-24 px-6 border-t border-white/5">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-xs font-black tracking-[0.4em] uppercase text-slate-500 mb-16 flex items-center gap-4">
-        <span class="w-8 h-px bg-casio-accent"></span> Experience History
-      </h2>
-
-      <div class="space-y-16 ml-6 border-l border-white/10">
-        
-        <!-- Traction Fintech -->
-        <div class="timeline-node pl-10 reveal">
-          <div class="flex gap-5 items-start cursor-pointer" onclick="toggleDetail('traction', this)">
-            <div class="logo-container bg-slate-900 border border-white/10">
-              <i class="fa-solid fa-building-columns text-casio-accent text-2xl"></i>
-            </div>
-            <div class="flex-1">
-              <div class="mono text-xs text-casio-accent">JUNE 2025 — NOV 2025</div>
-              <h3 class="text-2xl font-bold text-white mb-1">Onboarding Officer (UK & EU)</h3>
-              <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Traction Fintech | London</div>
-              <!-- IMPACT SUMMARY -->
-              <p class="text-casio-accent/80 text-sm mt-2 italic font-medium">Driving technical integration for 90+ daily B2B clients across multi-market financial operations.</p>
-              
-              <div class="mt-4 text-xs text-casio-accent font-bold uppercase tracking-widest">View Impact <i class="fa-solid fa-chevron-down ml-1"></i></div>
-            </div>
-          </div>
-          <div id="traction" class="detail-content text-slate-400 text-sm leading-relaxed">
-            <ul class="space-y-3 list-none">
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Delivered high-quality customer support to 90+ daily clients by diagnosing data issues.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Guided clients through corrective actions and technical setup for multi-market operations.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Gopuff -->
-        <div class="timeline-node pl-10 reveal">
-          <div class="flex gap-5 items-start cursor-pointer" onclick="toggleDetail('gopuff', this)">
-            <div class="logo-container overflow-hidden">
-               <svg viewBox="0 0 100 100" class="w-full h-full"><rect width="100" height="100" fill="#000030"/><path d="M20 50 Q50 20 80 50 Q50 80 20 50" stroke="#00d1ff" stroke-width="8" fill="none"/></svg>
-            </div>
-            <div class="flex-1">
-              <div class="mono text-xs text-casio-accent">FEB 2025 — JUNE 2025</div>
-              <h3 class="text-2xl font-bold text-white mb-1">Night Operations Supervisor</h3>
-              <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Gopuff | Hackney</div>
-              <!-- IMPACT SUMMARY -->
-              <p class="text-casio-accent/80 text-sm mt-2 italic font-medium">Managing end-to-end night logistics and rider coordination to hit 100% delivery SLAs during peak surges.</p>
-
-              <div class="mt-4 text-xs text-casio-accent font-bold uppercase tracking-widest">View Impact <i class="fa-solid fa-chevron-down ml-1"></i></div>
-            </div>
-          </div>
-          <div id="gopuff" class="detail-content text-slate-400 text-sm leading-relaxed">
-            <ul class="space-y-3 list-none">
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Led end-to-end night operations, managing pick, pack, dispatch, and rider coordination.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Supervised and coached teams using real-time KPIs and dashboards to optimize labor.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Acted as the senior escalation point for overnight issue resolution and safety compliance.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Amazon -->
-        <div class="timeline-node pl-10 reveal">
-          <div class="flex gap-5 items-start cursor-pointer" onclick="toggleDetail('amazon', this)">
-            <div class="logo-container">
-              <i class="fa-brands fa-amazon text-orange-500 text-2xl"></i>
-            </div>
-            <div class="flex-1">
-              <div class="mono text-xs text-casio-accent">DEC 2023 — JULY 2024</div>
-              <h3 class="text-2xl font-bold text-white mb-1">Area Manager (ECFT)</h3>
-              <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Amazon | Tilbury</div>
-              <!-- IMPACT SUMMARY -->
-              <p class="text-casio-accent/80 text-sm mt-2 italic font-medium">Boosted on-time shipment dispatch by 17% for 8 European fulfillment centers while leading 35 specialists.</p>
-
-              <div class="mt-4 text-xs text-casio-accent font-bold uppercase tracking-widest">View Impact <i class="fa-solid fa-chevron-down ml-1"></i></div>
-            </div>
-          </div>
-          <div id="amazon" class="detail-content text-slate-400 text-sm leading-relaxed">
-            <ul class="space-y-3 list-none">
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Directed 35 specialists in a high-pressure environment, increasing productivity by 13%.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Improved on-time shipment dispatch by 17% for 8 FCs across Central Europe.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Developed structured feedback sessions to build team capability and performance.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Gorillas -->
-        <div class="timeline-node pl-10 reveal">
-          <div class="flex gap-5 items-start cursor-pointer" onclick="toggleDetail('gorillas', this)">
-            <div class="logo-container bg-black border border-white/20">
-               <svg viewBox="0 0 40 40" class="w-8 h-8"><path d="M5 10 L20 2 L35 10 L35 30 L20 38 L5 30 Z" fill="#fff"/></svg>
-            </div>
-            <div class="flex-1">
-              <div class="mono text-xs text-casio-accent">NOV 2021 — FEB 2023</div>
-              <h3 class="text-2xl font-bold text-white mb-1">Operations Supervisor</h3>
-              <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Gorillas | Chelsea & Kensington</div>
-              <!-- IMPACT SUMMARY -->
-              <p class="text-casio-accent/80 text-sm mt-2 italic font-medium">Secured a 7.86% uplift in service-level KPIs and trained a massive fleet of 100+ delivery associates.</p>
-
-              <div class="mt-4 text-xs text-casio-accent font-bold uppercase tracking-widest">View Impact <i class="fa-solid fa-chevron-down ml-1"></i></div>
-            </div>
-          </div>
-          <div id="gorillas" class="detail-content text-slate-400 text-sm leading-relaxed">
-            <ul class="space-y-3 list-none">
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Improved service-level KPIs by 7.86% within the South London dark store network.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Trained and supported 100+ riders and associates to improve performance.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Managed daily store operations ensuring timely, accurate, and friendly service.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Tresmark -->
-        <div class="timeline-node pl-10 reveal">
-          <div class="flex gap-5 items-start cursor-pointer" onclick="toggleDetail('tresmark', this)">
-            <div class="logo-container bg-blue-900">
-               <i class="fa-solid fa-chart-line text-white text-xl"></i>
-            </div>
-            <div class="flex-1">
-              <div class="mono text-xs text-casio-accent">MAY 2019 — OCTOBER 2021</div>
-              <h3 class="text-2xl font-bold text-white mb-1">Lead UX/UI Designer</h3>
-              <div class="text-sm font-bold text-slate-400 uppercase tracking-widest">Tresmark | Pakistan</div>
-              <!-- IMPACT SUMMARY -->
-              <p class="text-casio-accent/80 text-sm mt-2 italic font-medium">Architected high-performance fintech interfaces for interbank broker and currency exchange platforms.</p>
-
-              <div class="mt-4 text-xs text-casio-accent font-bold uppercase tracking-widest">View Impact <i class="fa-solid fa-chevron-down ml-1"></i></div>
-            </div>
-          </div>
-          <div id="tresmark" class="detail-content text-slate-400 text-sm leading-relaxed">
-            <ul class="space-y-3 list-none">
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Designed TresmarkeFX: A leading interbank and broker currency exchange platform.</li>
-              <li class="flex gap-3"><span class="text-casio-accent">■</span> Translated complex financial data flows into intuitive, high-performance interfaces.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Operational Performance -->
-  <section id="performance" class="py-24 px-6 bg-white text-black">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-4xl font-black uppercase tracking-tight">Operational Performance</h2>
-        <div class="h-1 w-20 bg-casio-blue mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-10 border border-slate-200 hover:shadow-xl transition-all group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-casio-blue/10 flex items-center justify-center text-casio-blue">
-              <i class="fa-solid fa-boxes-stacked text-xl"></i>
-            </div>
-            <h3 class="text-xl font-black uppercase">Inventory Logic</h3>
-          </div>
-          <p class="text-slate-500 text-sm mb-6">Execution of strict WMS standards for high-value SKU management.</p>
-          <div class="flex items-end gap-2">
-            <span class="text-4xl font-black text-casio-blue">98.5%</span>
-            <span class="text-[10px] font-bold text-slate-400 mb-2 uppercase">System Accuracy Target</span>
-          </div>
-        </div>
-
-        <div class="p-10 border border-slate-200 hover:shadow-xl transition-all group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-600">
-              <i class="fa-solid fa-diagram-project text-xl"></i>
-            </div>
-            <h3 class="text-xl font-black uppercase">Lean Systems</h3>
-          </div>
-          <p class="text-slate-500 text-sm mb-6">Application of Six Sigma to eliminate dispatch bottlenecking.</p>
-          <div class="flex items-end gap-2">
-            <span class="text-4xl font-black text-green-600">13%</span>
-            <span class="text-[10px] font-bold text-slate-400 mb-2 uppercase">Productivity Gain</span>
-          </div>
-        </div>
-
-        <div class="p-10 border border-slate-200 hover:shadow-xl transition-all group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-600">
-              <i class="fa-solid fa-truck-ramp-box text-xl"></i>
-            </div>
-            <h3 class="text-xl font-black uppercase">SLA Fulfillment</h3>
-          </div>
-          <p class="text-slate-500 text-sm mb-6">Management of regional hubs to ensure prompt last-mile delivery.</p>
-          <div class="flex items-end gap-2">
-            <span class="text-4xl font-black text-orange-600">17%</span>
-            <span class="text-[10px] font-bold text-slate-400 mb-2 uppercase">Dispatch Lift</span>
-          </div>
-        </div>
-
-        <div class="p-10 border border-slate-200 hover:shadow-xl transition-all group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-600">
-              <i class="fa-solid fa-users text-xl"></i>
-            </div>
-            <h3 class="text-xl font-black uppercase">Team Leadership</h3>
-          </div>
-          <p class="text-slate-500 text-sm mb-6">Building capability through structured development and feedback.</p>
-          <div class="flex items-end gap-2">
-            <span class="text-4xl font-black text-purple-600">100+</span>
-            <span class="text-[10px] font-bold text-slate-400 mb-2 uppercase">Associates Trained</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Certificates -->
-  <section id="edu" class="py-24 px-6 border-t border-white/5">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div>
-          <h2 class="mono text-xs tracking-[0.5em] text-casio-accent uppercase mb-12">Academic Credentials</h2>
-          <div class="space-y-6">
-            <div class="p-6 bg-white/5 border border-white/10">
-              <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Coventry University, UK</div>
-              <h4 class="text-lg font-bold text-white">M.Sc. International Business Management</h4>
-            </div>
-            <div class="p-6 bg-white/5 border border-white/10">
-              <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">University of Central Punjab</div>
-              <h4 class="text-lg font-bold text-white">M.Com Accounting and Finance</h4>
-            </div>
-            <div class="p-6 bg-white/5 border border-white/10">
-              <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Punjab University</div>
-              <h4 class="text-lg font-bold text-white">B.Com Accounting</h4>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h2 class="mono text-xs tracking-[0.5em] text-casio-accent uppercase mb-12">Professional Certificates</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-6 bg-slate-900 border border-casio-blue/20 flex flex-col items-center text-center">
-              <i class="fa-brands fa-google text-2xl mb-4 text-casio-accent"></i>
-              <div class="text-xs font-bold text-white uppercase">Google UX Professional</div>
-            </div>
-            <div class="p-6 bg-slate-900 border border-casio-blue/20 flex flex-col items-center text-center">
-              <i class="fa-solid fa-award text-2xl mb-4 text-green-500"></i>
-              <div class="text-xs font-bold text-white uppercase">Lean Six Sigma Green Belt</div>
-            </div>
-            <div class="p-6 bg-slate-900 border border-casio-blue/20 flex flex-col items-center text-center">
-              <i class="fa-brands fa-amazon text-2xl mb-4 text-orange-500"></i>
-              <div class="text-xs font-bold text-white uppercase">Situational Leadership 2 (SLII)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-black border-t border-white/10 py-20 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-      <div class="text-left">
-        <div class="px-4 py-2 bg-white text-black font-black text-2xl inline-block mb-4">CASIO</div>
-        <p class="text-slate-500 text-sm max-w-xs uppercase tracking-widest font-bold">Moiz Janjua // Operations Excellence Portfolio</p>
-      </div>
-      <div class="flex gap-8 items-center">
-        <div class="text-right">
-          <div class="text-white font-bold">moizjanjua@icloud.com</div>
-          <div class="text-[10px] text-slate-500 mono uppercase">+44 7853 204148</div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    function toggleDetail(id, header) {
-      const content = document.getElementById(id);
-      const isExpanded = content.classList.contains('expanded');
-      
-      // Close others
-      document.querySelectorAll('.detail-content').forEach(el => el.classList.remove('expanded'));
-      document.querySelectorAll('.fa-chevron-down').forEach(el => el.style.transform = 'rotate(0deg)');
-      
-      if (!isExpanded) {
-        content.classList.add('expanded');
-        header.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SharedOwnership Pro</title>
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #000;
+        overflow-x: hidden;
+        color: white;
       }
-    }
-  </script>
+      
+      /* Noise Texture Overlay */
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 50;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Animated Blobs */
+      @keyframes float {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      
+      @keyframes float-delayed {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(-30px, 50px) scale(0.9); }
+        66% { transform: translate(20px, -20px) scale(1.1); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+
+      .blob-1 { animation: float 12s ease-in-out infinite; }
+      .blob-2 { animation: float-delayed 15s ease-in-out infinite; }
+
+      /* Components */
+      .glass-card {
+        background: rgba(28, 28, 30, 0.6);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 32px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+      }
+      .glass-card:hover {
+        background: rgba(28, 28, 30, 0.75);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .input-group {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 16px;
+        transition: all 0.2s;
+      }
+      .input-group:focus-within {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(94, 92, 230, 0.5);
+      }
+      .input-field {
+        background: transparent;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 500;
+        width: 100%;
+        outline: none;
+      }
+      
+      /* Big Editable Input */
+      .input-hero {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
+        color: white;
+        outline: none;
+        width: 100%;
+        transition: border-color 0.2s;
+      }
+      .input-hero:focus {
+        border-color: white;
+      }
+
+      /* Slider Customization */
+      input[type=range] {
+        -webkit-appearance: none;
+        background: transparent;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+        margin-top: -10px;
+        box-shadow: 0 0 15px rgba(255,255,255,0.8);
+        transition: transform 0.1s;
+      }
+      input[type=range]::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8px;
+        cursor: pointer;
+        background: transparent; 
+        border-radius: 2px;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+      /* Animation Classes */
+      .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+      @keyframes fadeIn { to { opacity: 1; } }
+      
+      .slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+      @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+      /* Reveal on Scroll Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Disabled State */
+      .input-disabled {
+        opacity: 0.3;
+        pointer-events: none;
+        filter: grayscale(100%);
+      }
+
+      /* Toaster Animation */
+      @keyframes bounce-small {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(3px); }
+      }
+      .animate-bounce-small {
+          animation: bounce-small 2s infinite;
+      }
+
+      /* Custom Scrollbar for Modal Table */
+      .custom-scrollbar::-webkit-scrollbar {
+          height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255,255,255,0.05);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255,255,255,0.2);
+          border-radius: 10px;
+      }
+
+      /* Visitor Badge Styles */
+      .visitor-badge {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
+          padding: 6px 14px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
+      }
+      .visitor-badge:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.25);
+          color: white;
+          box-shadow: 0 0 20px rgba(52, 211, 153, 0.1);
+      }
+      .visitor-count {
+          font-family: 'Space Mono', monospace;
+          font-weight: 700;
+          color: #34d399;
+          letter-spacing: 0.5px;
+      }
+    </style>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              primary: "#5e5ce6",
+              accent: "#bf5af2",
+              success: "#34d399",
+              warning: "#fbbf24",
+              info: "#22d3ee"
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-black overflow-hidden z-[-1]">
+         <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#5e5ce6]/20 rounded-full blur-[120px] blob-1 opacity-60 mix-blend-screen"></div>
+         <div class="absolute bottom-[-20%] right-[-10%] w-[700px] h-[700px] bg-[#bf5af2]/20 rounded-full blur-[120px] blob-2 opacity-50 mix-blend-screen"></div>
+         <div class="absolute top-[40%] left-[40%] w-[500px] h-[500px] bg-[#22d3ee]/10 rounded-full blur-[100px] animate-pulse opacity-30 mix-blend-screen"></div>
+    </div>
+    <div class="bg-noise"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-[1400px] mx-auto px-6 py-8 relative z-10 pb-20">
+        
+        <!-- Header -->
+        <header class="flex flex-wrap items-center gap-4 mb-12 slide-up" style="animation-delay: 0s;">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-lg flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h1 class="text-2xl font-bold tracking-tight text-white/90 mr-auto">SharedOwnership <span class="text-white/40 font-light">Pro</span></h1>
+            
+            <!-- Quirky Visitor Counter -->
+            <div class="visitor-badge" title="Unique Visitors">
+                <div class="relative flex items-center justify-center w-4 h-4">
+                    <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20 animate-ping"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <span class="text-[10px] uppercase text-white/40 font-semibold tracking-wider">Visitors</span>
+                <span class="visitor-count" id="visitor-count">...</span>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="mb-10 slide-up" style="animation-delay: 0.1s;">
+            <div class="glass-card p-6 md:p-8 border-t border-white/20 bg-gradient-to-b from-white/[0.08] to-transparent">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12">
+                    <!-- Property Value (Editable) -->
+                    <div class="flex-1 space-y-4">
+                        <h2 class="text-sm font-medium text-white/50 uppercase tracking-wider">Property Value</h2>
+                        <div class="flex items-center gap-1">
+                            <span class="text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tighter drop-shadow-lg">£</span>
+                            <input type="text" id="input-property-value" value="325,000" class="input-hero text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter drop-shadow-lg bg-transparent border-b border-white/10 focus:border-white focus:outline-none w-full max-w-lg" placeholder="0">
+                        </div>
+                        <p class="text-white/40 text-sm">Type to adjust value</p>
+                    </div>
+
+                    <!-- Share Slider -->
+                    <div class="flex-1 flex flex-col justify-center space-y-6 md:pl-12 md:border-l border-white/10 reveal">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm font-medium text-white/50 uppercase tracking-wider">Your Share</span>
+                                <span class="text-3xl font-bold text-white" id="display-share-percentage">25%</span>
+                            </div>
+                            <!-- Interactive Slider Container -->
+                            <div class="relative h-12 bg-black/30 rounded-full p-1 flex items-center overflow-hidden border border-white/10">
+                                <!-- Progress Bar Visual -->
+                                <div id="share-progress-bar" class="absolute top-1 bottom-1 left-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-[0_0_20px_rgba(94,92,230,0.5)] transition-all duration-150 ease-out pointer-events-none" style="width: 25%"></div>
+                                
+                                <!-- Actual Input (Invisible but interactive) -->
+                                <input type="range" id="input-share-percentage" min="10" max="100" step="5" value="25" class="relative z-20 w-full h-full opacity-0 cursor-pointer">
+                                
+                                <!-- Markers -->
+                                <div class="absolute inset-0 flex justify-between px-6 items-center pointer-events-none text-[10px] text-white/40 font-medium z-0">
+                                    <span>10%</span>
+                                    <span>50%</span>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-white/40">Share Value: <span class="text-white" id="display-share-value">£81,250</span></span>
+                            <span class="text-white/40">Unsold: <span class="text-white" id="display-unsold-equity">£243,750</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Inputs -->
+            <div class="lg:col-span-5 space-y-8 slide-up" style="animation-delay: 0.2s;">
+                
+                <!-- Financing -->
+                <div class="space-y-4 reveal">
+                    <h3 class="text-lg font-semibold text-white/80 pl-2">Financing</h3>
+                    <div class="glass-card p-6">
+                        <!-- Toggle -->
+                        <div class="flex items-center justify-between mb-6 pb-6 border-b border-white/10 group cursor-pointer" id="toggle-cash-purchase">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-7 rounded-full bg-white/20 p-1 transition-colors duration-300 relative" id="cash-toggle-bg">
+                                    <div class="w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 absolute top-1 left-1" id="cash-toggle-circle"></div>
+                                </div>
+                                <span class="text-sm font-medium text-white/80 group-hover:text-white transition-colors">Cash Purchase</span>
+                            </div>
+                            <span id="cash-active-label" class="text-xs text-primary font-bold uppercase tracking-wide hidden animate-pulse">Active</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="input-group col-span-2 transition-opacity duration-300" id="group-deposit">
+                                <div class="flex justify-between items-center mb-1">
+                                    <label class="block text-xs font-medium text-white/50 tracking-wide uppercase">Deposit (%)</label>
+                                    <button onclick="toggleModal('deposit-breakdown-modal')" class="text-[10px] text-primary hover:text-white transition-colors cursor-pointer hover:underline">
+                                        Detail breakdown
+                                    </button>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="number" id="input-deposit" value="15" min="0" max="100" class="input-field">
+                                    <span class="text-white/40 text-sm">%</span>
+                                </div>
+                            </div>
+                            <!-- Mortgage Rate (Hidden if Cash) -->
+                            <div class="input-group transition-opacity duration-300" id="group-rate">
+                                <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Rate</label>
+                                <div class="flex items-center">
+                                    <input type="number" id="input-rate" value="5.2" min="0" max="15" step="0.1" class="input-field">
+                                    <span class="text-white/40 text-sm">%</span>
+                                </div>
+                            </div>
+                            <!-- Term (Hidden if Cash) -->
+                            <div class="input-group transition-opacity duration-300" id="group-term">
+                                <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Term</label>
+                                <div class="flex items-center">
+                                    <input type="number" id="input-term" value="25" min="5" max="40" class="input-field">
+                                    <span class="text-white/40 text-sm">Yrs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Costs -->
+                <div class="space-y-4 reveal">
+                    <h3 class="text-lg font-semibold text-white/80 pl-2">Monthly Outgoings</h3>
+                    <div class="glass-card p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Rent Rate -->
+                            <div class="col-span-2 flex items-end gap-4 bg-white/[0.03] p-4 rounded-2xl border border-white/[0.05]">
+                                <div class="flex-1">
+                                    <label class="text-xs text-white/50 uppercase tracking-wide">Rent Rate</label>
+                                    <div class="flex items-center mt-1">
+                                        <input type="number" id="input-rent-rate" value="2.75" step="0.05" class="bg-transparent text-xl font-medium text-white focus:outline-none w-20">
+                                        <span class="text-white/40 text-sm">%</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-white/40">Applied on</div>
+                                    <div class="text-sm font-medium text-white/80" id="display-rent-base">£243,750</div>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Service Chg</label>
+                                <div class="flex items-center">
+                                    <span class="text-white/40 mr-1.5">£</span>
+                                    <input type="number" id="input-service-charge" value="180" class="input-field">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Ground Rent</label>
+                                <div class="flex items-center">
+                                    <span class="text-white/40 mr-1.5">£</span>
+                                    <input type="number" id="input-ground-rent" value="0" class="input-field">
+                                </div>
+                            </div>
+                            <div class="input-group col-span-2 relative">
+                                <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Council Tax</label>
+                                <div class="flex items-center">
+                                    <span class="text-white/40 mr-1.5">£</span>
+                                    <input type="number" id="input-council-tax" value="150" class="input-field">
+                                </div>
+                                <button onclick="toggleModal('postcode-modal')" class="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white/70 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 reveal">
+                        <div class="flex items-center gap-2 mb-4 text-white/60">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <span class="text-xs uppercase font-semibold tracking-wide">Utilities (Est.)</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="input-group p-3">
+                                <label class="block text-[10px] text-white/50 mb-1">Energy</label>
+                                <input type="number" id="input-electricity" value="85" class="input-field text-lg">
+                            </div>
+                            <div class="input-group p-3">
+                                <label class="block text-[10px] text-white/50 mb-1">Web</label>
+                                <input type="number" id="input-internet" value="40" class="input-field text-lg">
+                            </div>
+                            <div class="input-group p-3">
+                                <label class="block text-[10px] text-white/50 mb-1">Water</label>
+                                <input type="number" id="input-water" value="35" class="input-field text-lg">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group bg-white/[0.02] reveal">
+                         <label class="block text-xs font-medium text-white/50 mb-1 tracking-wide uppercase">Annual Income (Pre-Tax)</label>
+                         <div class="flex items-center">
+                            <span class="text-white/40 mr-1.5">£</span>
+                            <input type="number" id="input-income" value="55000" class="input-field">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Visuals & Breakdown -->
+            <div class="lg:col-span-7 space-y-8 slide-up" style="animation-delay: 0.3s;">
+                
+                <!-- Separator with ID for Scrolling -->
+                <div id="results-separator" class="relative flex items-center justify-center pt-8 pb-4 reveal">
+                     <div class="h-px bg-white/10 w-full absolute top-1/2 left-0 z-0"></div>
+                     <span class="relative z-10 bg-black px-4 text-xs font-medium text-white/40 uppercase tracking-widest">Results</span>
+                </div>
+
+                <!-- Total Cost Card -->
+                <div class="glass-card p-8 bg-gradient-to-br from-[#1c1c1e] via-[#2c2c2e] to-[#1c1c1e] border-white/10 reveal">
+                    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
+                        <div class="flex-1 text-center md:text-left space-y-2">
+                            <h3 class="text-white/50 text-sm uppercase tracking-wider font-medium">Total Monthly Cost</h3>
+                            <div class="text-5xl md:text-7xl font-bold text-white tracking-tight drop-shadow-2xl" id="display-total-cost">£1,632</div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/5">
+                                <span id="status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-xs font-medium text-white/70" id="display-income-percentage">~36% of gross monthly income</span>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart Container -->
+                        <div class="relative w-40 h-40 md:w-64 md:h-64 flex items-center justify-center">
+                             <canvas id="costChart"></canvas>
+                             <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                <span class="text-2xl md:text-3xl font-bold text-white" id="pie-center-text">25%</span>
+                                <span class="text-[10px] text-white/40 uppercase tracking-widest">Share</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                    <div class="p-4 rounded-3xl bg-white/[0.03] border border-indigo-500/30 backdrop-blur-md">
+                        <div class="text-[10px] uppercase tracking-wider font-semibold opacity-70 mb-1 text-indigo-400">Mortgage</div>
+                        <div class="text-xl font-bold text-white" id="box-mortgage">£480</div>
+                        <div class="text-[10px] text-white/30 mt-1 truncate" id="sub-mortgage">On £69,062</div>
+                    </div>
+                    <div class="p-4 rounded-3xl bg-white/[0.03] border border-pink-500/30 backdrop-blur-md">
+                        <div class="text-[10px] uppercase tracking-wider font-semibold opacity-70 mb-1 text-pink-400">Rent</div>
+                        <div class="text-xl font-bold text-white" id="box-rent">£559</div>
+                        <div class="text-[10px] text-white/30 mt-1 truncate" id="sub-rent">On £243,750</div>
+                    </div>
+                    <div class="p-4 rounded-3xl bg-white/[0.03] border border-emerald-500/30 backdrop-blur-md">
+                        <div class="text-[10px] uppercase tracking-wider font-semibold opacity-70 mb-1 text-emerald-400">Fees & Tax</div>
+                        <div class="text-xl font-bold text-white" id="box-fees">£330</div>
+                        <div class="text-[10px] text-white/30 mt-1 truncate">Service + Tax</div>
+                    </div>
+                    <div class="p-4 rounded-3xl bg-white/[0.03] border border-cyan-500/30 backdrop-blur-md">
+                        <div class="text-[10px] uppercase tracking-wider font-semibold opacity-70 mb-1 text-cyan-400">Utilities</div>
+                        <div class="text-xl font-bold text-white" id="box-utilities">£160</div>
+                        <div class="text-[10px] text-white/30 mt-1 truncate">Est. Bills</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="mt-16 slide-up reveal" style="animation-delay: 0.4s;">
+            <div class="flex items-center gap-4 mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5e5ce6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                <h2 class="text-xl font-bold text-white">Share Projection</h2>
+                <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            
+            <div class="glass-card overflow-x-auto">
+                <div class="min-w-[800px] p-6">
+                     <div class="w-full grid grid-cols-6 gap-4 text-sm pt-2">
+                         <!-- Header -->
+                         <div class="col-span-6 grid grid-cols-6 text-white/40 uppercase tracking-widest text-[10px] font-semibold mb-2 px-4">
+                            <div>Share</div>
+                            <div class="text-right">Mortgage</div>
+                            <div class="text-right">Rent</div>
+                            <div class="text-right">Fees</div>
+                            <div class="text-right text-white/70">Total</div>
+                            <div class="text-right">Upfront</div>
+                         </div>
+                         <!-- Rows injected by JS -->
+                         <div id="comparison-rows" class="col-span-6 space-y-2"></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 pt-8 border-t border-white/10 text-center pb-8 slide-up reveal" style="animation-delay: 0.5s;">
+            <p class="text-white/40 text-sm mb-3">Website designed and managed by Moiz Janjua</p>
+            <a href="https://linkedin.com/in/moizjanjua" target="_blank" class="inline-flex items-center gap-2 text-white/60 hover:text-white transition-all bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span class="text-xs font-medium">Connect on LinkedIn</span>
+            </a>
+        </footer>
+
+    </div>
+
+    <!-- Scroll Toaster (Dual Action) -->
+    <div id="scroll-toaster" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 translate-y-24 opacity-0">
+        <div class="flex items-center p-1.5 rounded-full border border-white/10 bg-[#1c1c1e]/80 backdrop-blur-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)]">
+             
+             <!-- Edit Numbers -->
+             <button id="toaster-edit" class="flex items-center gap-2 px-4 py-3 rounded-full hover:bg-white/10 transition-all active:scale-95 text-white/80 hover:text-white group">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-y-0.5 transition-transform"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+                 <span class="text-xs font-semibold tracking-wide">Edit Numbers</span>
+             </button>
+
+             <!-- Divider -->
+             <div class="w-px h-5 bg-white/10 mx-1"></div>
+
+             <!-- Show Results -->
+             <button id="toaster-results" class="flex items-center gap-2 px-4 py-3 rounded-full hover:bg-white/10 transition-all active:scale-95 text-white group">
+                 <span class="text-xs font-semibold tracking-wide">Show Results</span>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-y-0.5 transition-transform"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+             </button>
+        </div>
+    </div>
+
+    <!-- Modal for Council Tax -->
+    <div id="postcode-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleModal('postcode-modal')"></div>
+        <div class="relative bg-[#1e293b] border border-white/10 rounded-3xl w-full max-w-md p-6 shadow-2xl transform transition-all scale-100">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-white">Estimate Council Tax</h3>
+                <button onclick="toggleModal('postcode-modal')" class="p-2 hover:bg-white/10 rounded-full text-white/70">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="space-y-6">
+                <p class="text-white/60 text-sm leading-relaxed">Enter postcode. AI will check typical rates.</p>
+                <div class="relative">
+                    <input type="text" id="input-postcode" placeholder="e.g., SW1A 1AA" class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-4 pr-4 text-white text-lg focus:outline-none focus:border-primary uppercase placeholder-white/20">
+                </div>
+                <button onclick="handleEstimateTax()" id="btn-estimate-tax" class="w-full py-4 bg-primary hover:bg-primary/80 rounded-2xl font-semibold text-white transition-all flex items-center justify-center">
+                    Get Estimate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Deposit Breakdown -->
+    <div id="deposit-breakdown-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleModal('deposit-breakdown-modal')"></div>
+        <div class="relative bg-[#1e293b] border border-white/10 rounded-3xl w-full max-w-4xl p-6 shadow-2xl transform transition-all scale-100 flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-6 flex-shrink-0">
+                <div>
+                    <h3 class="text-xl font-semibold text-white">Deposit Scenarios</h3>
+                    <p class="text-white/40 text-xs mt-1">Based on current Share Value, Rate & Term</p>
+                </div>
+                <button onclick="toggleModal('deposit-breakdown-modal')" class="p-2 hover:bg-white/10 rounded-full text-white/70">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            
+            <!-- Table Container (Horizontal Scroll) -->
+            <div class="overflow-x-auto">
+                <div class="min-w-[600px]">
+                    <!-- Table Header -->
+                    <div class="grid grid-cols-5 gap-2 px-4 py-3 bg-white/5 text-[10px] uppercase tracking-wider font-semibold text-white/60 rounded-t-xl">
+                        <div>Deposit %</div>
+                        <div class="text-right">Deposit Req.</div>
+                        <div class="text-right">Mortgage Amt</div>
+                        <div class="text-right">Monthly Interest</div>
+                        <div class="text-right">Lifetime Interest</div>
+                    </div>
+
+                    <!-- Table Body (Scrollable) -->
+                    <div class="overflow-y-auto max-h-[50vh] rounded-b-xl border border-t-0 border-white/10 bg-black/20 custom-scrollbar" id="deposit-breakdown-rows">
+                        <!-- Rows injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic -->
+    <script type="module">
+        // AI Logic is now dynamically imported to prevent blocking the main script
+        const apiKey = ""; 
+
+        // --- State Management ---
+        const state = {
+            propertyValue: 325000,
+            sharePercentage: 25,
+            depositPercentage: 15,
+            mortgageRate: 5.2,
+            mortgageTerm: 25,
+            rentRate: 2.75,
+            serviceCharge: 180,
+            councilTax: 150,
+            groundRent: 0,
+            electricity: 85,
+            internet: 40,
+            water: 35,
+            annualIncome: 55000,
+            isCashPurchase: false
+        };
+
+        // --- Chart.js Instance ---
+        let chartInstance = null;
+
+        function initChart() {
+            try {
+                const canvas = document.getElementById('costChart');
+                if(!canvas) return;
+                const ctx = canvas.getContext('2d');
+                
+                Chart.defaults.color = '#fff';
+                Chart.defaults.font.family = 'Inter';
+                
+                chartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Mortgage', 'Rent', 'Fees', 'Tax', 'Utils'],
+                        datasets: [{
+                            data: [0,0,0,0,0],
+                            backgroundColor: ['#818cf8', '#f472b6', '#34d399', '#fbbf24', '#22d3ee'],
+                            borderWidth: 0,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        cutout: '75%',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                padding: 12,
+                                cornerRadius: 12,
+                                bodyFont: { size: 14, weight: 'bold' },
+                                displayColors: true,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(context.parsed);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error("Chart init error", e);
+            }
+        }
+
+        // --- Calculations ---
+        function calculateMortgagePayment(principal, annualRate, years) {
+            if (principal <= 0) return 0;
+            if (annualRate <= 0) return principal / (years * 12);
+            const monthlyRate = annualRate / 100 / 12;
+            const numPayments = years * 12;
+            return (principal * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+        }
+
+        function calculateResults(inputs) {
+            const shareValue = inputs.propertyValue * (inputs.sharePercentage / 100);
+            let depositAmount, mortgageAmount, monthlyMortgage;
+
+            if (inputs.isCashPurchase) {
+                depositAmount = shareValue; // You pay full share price upfront
+                mortgageAmount = 0;
+                monthlyMortgage = 0;
+            } else {
+                depositAmount = shareValue * (inputs.depositPercentage / 100);
+                mortgageAmount = shareValue - depositAmount;
+                monthlyMortgage = calculateMortgagePayment(mortgageAmount, inputs.mortgageRate, inputs.mortgageTerm);
+            }
+
+            const unsoldEquity = inputs.propertyValue - shareValue;
+            const annualRent = unsoldEquity * (inputs.rentRate / 100);
+            const monthlyRent = annualRent / 12;
+
+            const totalMonthly = monthlyMortgage + monthlyRent + inputs.serviceCharge + inputs.councilTax + inputs.groundRent + inputs.electricity + inputs.internet + inputs.water;
+            
+            return {
+                shareValue,
+                depositAmount,
+                mortgageAmount,
+                monthlyMortgage,
+                monthlyRent,
+                totalMonthlyCost: totalMonthly,
+                unsoldEquity,
+                monthlyUtilities: inputs.electricity + inputs.internet + inputs.water,
+                monthlyFees: inputs.serviceCharge + inputs.groundRent
+            };
+        }
+
+        function formatCurrency(val) {
+            return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(val);
+        }
+
+        // --- UI Updates ---
+        function updateUI() {
+            const results = calculateResults(state);
+
+            // Inputs Sync
+            const shareDisplay = document.getElementById('display-share-percentage');
+            if(shareDisplay) shareDisplay.innerText = state.sharePercentage + '%';
+            
+            const progressBar = document.getElementById('share-progress-bar');
+            if(progressBar) progressBar.style.width = state.sharePercentage + '%';
+            
+            document.getElementById('display-share-value').innerText = formatCurrency(results.shareValue);
+            document.getElementById('display-unsold-equity').innerText = formatCurrency(results.unsoldEquity);
+            document.getElementById('display-rent-base').innerText = formatCurrency(results.unsoldEquity);
+            document.getElementById('pie-center-text').innerText = state.sharePercentage + '%';
+            
+            // Editable Input Display
+            const propInput = document.getElementById('input-property-value');
+            if(document.activeElement !== propInput) {
+               propInput.value = state.propertyValue.toLocaleString('en-US');
+            }
+
+            // Cash Toggle Visuals
+            const toggleBg = document.getElementById('cash-toggle-bg');
+            const toggleCircle = document.getElementById('cash-toggle-circle');
+            const activeLabel = document.getElementById('cash-active-label');
+            
+            // Groups to hide/disable
+            const rateGroup = document.getElementById('group-rate');
+            const termGroup = document.getElementById('group-term');
+            const depositGroup = document.getElementById('group-deposit');
+            
+            if (state.isCashPurchase) {
+                if(toggleBg) toggleBg.classList.replace('bg-white/20', 'bg-primary');
+                if(toggleCircle) toggleCircle.classList.add('translate-x-5');
+                if(activeLabel) activeLabel.classList.remove('hidden');
+                
+                if(rateGroup) rateGroup.classList.add('input-disabled');
+                if(termGroup) termGroup.classList.add('input-disabled');
+                if(depositGroup) depositGroup.classList.add('input-disabled');
+            } else {
+                if(toggleBg) toggleBg.classList.replace('bg-primary', 'bg-white/20');
+                if(toggleCircle) toggleCircle.classList.remove('translate-x-5');
+                if(activeLabel) activeLabel.classList.add('hidden');
+                
+                if(rateGroup) rateGroup.classList.remove('input-disabled');
+                if(termGroup) termGroup.classList.remove('input-disabled');
+                if(depositGroup) depositGroup.classList.remove('input-disabled');
+            }
+
+            // Results
+            document.getElementById('display-total-cost').innerText = formatCurrency(results.totalMonthlyCost);
+            
+            const monthlyGross = state.annualIncome / 12;
+            const incomePct = monthlyGross > 0 ? Math.round((results.totalMonthlyCost / monthlyGross) * 100) : 0;
+            
+            const statusDot = document.getElementById('status-dot');
+            if(statusDot) {
+                if (incomePct > 45) statusDot.className = "w-2 h-2 rounded-full bg-red-500 animate-pulse";
+                else if (incomePct > 35) statusDot.className = "w-2 h-2 rounded-full bg-yellow-500 animate-pulse";
+                else statusDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+            }
+
+            document.getElementById('display-income-percentage').innerText = `~${incomePct}% of gross monthly income`;
+
+            document.getElementById('box-mortgage').innerText = formatCurrency(results.monthlyMortgage);
+            document.getElementById('sub-mortgage').innerText = state.isCashPurchase ? "Cash Purchase" : `On ${formatCurrency(results.mortgageAmount)}`;
+            
+            document.getElementById('box-rent').innerText = formatCurrency(results.monthlyRent);
+            document.getElementById('sub-rent').innerText = `On ${formatCurrency(results.unsoldEquity)}`;
+            
+            document.getElementById('box-fees').innerText = formatCurrency(results.monthlyFees + state.councilTax);
+            document.getElementById('box-utilities').innerText = formatCurrency(results.monthlyUtilities);
+
+            // Chart
+            if (chartInstance) {
+                chartInstance.data.datasets[0].data = [
+                    results.monthlyMortgage,
+                    results.monthlyRent,
+                    results.monthlyFees,
+                    state.councilTax,
+                    results.monthlyUtilities
+                ];
+                chartInstance.update();
+            }
+
+            // Comparison Table
+            renderComparisonTable();
+        }
+
+        function renderComparisonTable() {
+            const container = document.getElementById('comparison-rows');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            [10, 25, 40, 50, 75].forEach(pct => {
+                const simState = { ...state, sharePercentage: pct };
+                const res = calculateResults(simState);
+                const isCurrent = pct === state.sharePercentage;
+                const utils = simState.councilTax + res.monthlyFees + res.monthlyUtilities;
+
+                const row = document.createElement('div');
+                row.className = `grid grid-cols-6 items-center px-4 py-4 rounded-xl transition-all ${isCurrent ? 'bg-primary/20 border border-primary/30' : 'hover:bg-white/5'}`;
+                
+                // Click to jump to this share
+                row.style.cursor = 'pointer';
+                row.onclick = () => {
+                    state.sharePercentage = pct;
+                    document.getElementById('input-share-percentage').value = pct;
+                    updateUI();
+                };
+
+                row.innerHTML = `
+                    <div class="font-bold text-white flex items-center gap-2">
+                        ${pct}% 
+                        ${isCurrent ? '<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>' : ''}
+                    </div>
+                    <div class="text-right text-indigo-300">${formatCurrency(res.monthlyMortgage)}</div>
+                    <div class="text-right text-pink-300">${formatCurrency(res.monthlyRent)}</div>
+                    <div class="text-right text-emerald-300">${formatCurrency(utils)}</div>
+                    <div class="text-right font-bold text-white text-lg">${formatCurrency(res.totalMonthlyCost)}</div>
+                    <div class="text-right text-amber-300">${formatCurrency(res.depositAmount)}</div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // --- Deposit Breakdown Modal Logic ---
+        function renderDepositBreakdown() {
+            const container = document.getElementById('deposit-breakdown-rows');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const shareValue = state.propertyValue * (state.sharePercentage / 100);
+
+            for (let i = 0; i <= 100; i++) {
+                const depositPct = i;
+                const depositAmount = shareValue * (depositPct / 100);
+                const mortgageAmount = shareValue - depositAmount;
+                
+                // Always use mortgage calc for breakdown (assuming financing)
+                const monthlyPmt = calculateMortgagePayment(mortgageAmount, state.mortgageRate, state.mortgageTerm);
+                const totalRepayment = monthlyPmt * state.mortgageTerm * 12;
+                const totalInterest = Math.max(0, totalRepayment - mortgageAmount);
+
+                const isCurrent = Math.round(state.depositPercentage) === i;
+
+                const row = document.createElement('div');
+                row.className = `grid grid-cols-5 gap-2 px-4 py-3 border-b border-white/5 text-sm hover:bg-white/5 transition-colors ${isCurrent ? 'bg-primary/20' : ''}`;
+                
+                row.innerHTML = `
+                    <div class="font-medium text-white/90">${depositPct}%</div>
+                    <div class="text-right text-amber-300 font-medium">${formatCurrency(depositAmount)}</div>
+                    <div class="text-right text-white/70">${formatCurrency(mortgageAmount)}</div>
+                    <div class="text-right text-indigo-300 font-medium">${formatCurrency(monthlyPmt)}</div>
+                    <div class="text-right text-white/50">${formatCurrency(totalInterest)}</div>
+                `;
+                container.appendChild(row);
+            }
+        }
+
+        // --- Visitor Counter Logic (Quirky Total Visitors) ---
+        const initVisitorCounter = async () => {
+            const el = document.getElementById('visitor-count');
+            if(!el) return;
+
+            // Using counterapi.dev - a free reliable counter API
+            // Namespace should be unique to this app.
+            const namespace = 'sharedownership-pro-v1'; 
+            const key = 'visits';
+            const hasVisited = localStorage.getItem('sop_visited');
+            const startOffset = 26; // Start count from 26 as requested
+
+            try {
+                let count = 0;
+                
+                if (!hasVisited) {
+                    // New visitor (client-side check): Increment the global counter
+                    const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+                    const data = await response.json();
+                    count = data.count;
+                    localStorage.setItem('sop_visited', 'true');
+                } else {
+                    // Returning visitor: Just get the current global count
+                    const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
+                    const data = await response.json();
+                    count = data.count;
+                }
+
+                // Apply offset
+                const finalCount = startOffset + count;
+                el.innerText = finalCount.toLocaleString();
+                
+            } catch (e) {
+                console.warn('Visitor counter offline, falling back to simulation');
+                // Fallback simulation logic...
+                let localCount = parseInt(localStorage.getItem('sop_local_count') || '0');
+                if (!hasVisited) {
+                    localCount++;
+                    localStorage.setItem('sop_visited', 'true');
+                    localStorage.setItem('sop_local_count', localCount.toString());
+                }
+                el.innerText = (startOffset + localCount).toLocaleString();
+            }
+        };
+
+        // --- Event Listeners ---
+        const bind = (id, key, type = 'float') => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('input', (e) => {
+                let val = type === 'float' ? parseFloat(e.target.value) : parseInt(e.target.value);
+                if (isNaN(val)) val = 0;
+                state[key] = val;
+                updateUI();
+            });
+        };
+        
+        // Editable Property Value Logic
+        function setupEditableProperty() {
+            const el = document.getElementById('input-property-value');
+            if(!el) return;
+            
+            // On Focus: Remove commas for editing
+            el.addEventListener('focus', () => {
+                el.value = state.propertyValue.toString();
+            });
+
+            // On Blur: Format and save
+            el.addEventListener('blur', () => {
+                let raw = el.value.replace(/,/g, '');
+                let val = parseInt(raw);
+                if (isNaN(val) || val < 0) val = 0;
+                
+                state.propertyValue = val;
+                updateUI();
+            });
+
+            // On Enter key
+            el.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') el.blur();
+            });
+        }
+
+        // Setup Toaster Logic
+        function setupScrollToaster() {
+            const toaster = document.getElementById('scroll-toaster');
+            const btnEdit = document.getElementById('toaster-edit');
+            const btnResults = document.getElementById('toaster-results');
+            const separator = document.getElementById('results-separator');
+
+            if(!toaster || !separator || !btnEdit || !btnResults) return;
+
+            // Click Handlers
+            btnEdit.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            btnResults.onclick = () => separator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const handleScroll = () => {
+                // Show toaster if we scroll down a bit (e.g., > 100px)
+                if (window.scrollY > 100) {
+                    toaster.classList.remove('translate-y-24', 'opacity-0');
+                } else {
+                    toaster.classList.add('translate-y-24', 'opacity-0');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Init state
+        }
+        
+        // Setup Reveal Animations
+        function setupRevealAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+                
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger once on load
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("App Initializing...");
+            initChart();
+            setupEditableProperty();
+            setupScrollToaster();
+            setupRevealAnimations();
+            initVisitorCounter(); // Start the visitor count
+            
+            bind('input-share-percentage', 'sharePercentage', 'int');
+            bind('input-deposit', 'depositPercentage');
+            bind('input-rate', 'mortgageRate');
+            bind('input-term', 'mortgageTerm');
+            bind('input-rent-rate', 'rentRate');
+            bind('input-service-charge', 'serviceCharge');
+            bind('input-ground-rent', 'groundRent');
+            bind('input-council-tax', 'councilTax');
+            bind('input-electricity', 'electricity');
+            bind('input-internet', 'internet');
+            bind('input-water', 'water');
+            bind('input-income', 'annualIncome');
+
+            // Cash Toggle
+            const toggle = document.getElementById('toggle-cash-purchase');
+            if(toggle) {
+                toggle.addEventListener('click', () => {
+                    console.log("Toggling cash mode");
+                    state.isCashPurchase = !state.isCashPurchase;
+                    updateUI();
+                });
+            }
+
+            updateUI();
+        });
+
+        // --- Global Exports for HTML Click Handlers ---
+        window.toggleModal = (id) => {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                // Trigger breakdown render if opening that specific modal
+                if(id === 'deposit-breakdown-modal') {
+                    renderDepositBreakdown();
+                }
+            } else {
+                el.classList.add('hidden');
+            }
+        };
+
+        // --- Gemini AI (Dynamic Imports) ---
+        const getAI = async () => {
+            try {
+                // Dynamically import only when needed
+                const { GoogleGenAI } = await import("https://esm.sh/@google/genai@0.1.1");
+                return new GoogleGenAI({ apiKey: apiKey });
+            } catch (e) {
+                console.warn("AI Init failed", e);
+                return null;
+            }
+        };
+
+        window.handleEstimateTax = async () => {
+            const postcode = document.getElementById('input-postcode').value;
+            if (!postcode) return;
+
+            const btn = document.getElementById('btn-estimate-tax');
+            const originalText = btn.innerText;
+            btn.innerText = 'Calculating...';
+            btn.classList.add('opacity-70');
+
+            try {
+                const ai = await getAI();
+                if (ai) {
+                    const prompt = `Estimate monthly Council Tax for a standard 2-bedroom apartment in postcode ${postcode}, UK. Return ONLY the number (e.g. 150). If specific data is unavailable, estimate based on London average and return a number.`;
+                    const model = ai.getGenerativeModel({ model: 'gemini-2.5-flash-preview-09-2025' });
+                    const result = await model.generateContent(prompt);
+                    const response = await result.response;
+                    const val = parseInt(response.text().replace(/[^0-9]/g, '') || "140");
+                    
+                    state.councilTax = isNaN(val) ? 140 : val;
+                    document.getElementById('input-council-tax').value = state.councilTax;
+                    updateUI();
+                    window.toggleModal('postcode-modal');
+                } else {
+                    alert("AI features require an API key environment.");
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Could not estimate tax. Please enter manually.");
+            } finally {
+                btn.innerText = originalText;
+                btn.classList.remove('opacity-70');
+            }
+        };
+    </script>
 </body>
 </html>
