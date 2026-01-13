@@ -883,6 +883,18 @@
             saveTimeout = setTimeout(saveState, 1000); // Debounce by 1s
         }
 
+        // --- Haptic Feedback Utility ---
+        const triggerHaptic = (ms = 10) => {
+            // Check for Vibration API support (Note: Does not work on iOS Safari)
+            if (navigator.vibrate) {
+                try {
+                    navigator.vibrate(ms);
+                } catch(e) {
+                    // Silently fail if blocked
+                }
+            }
+        };
+
         // --- Chart.js Instance ---
         let chartInstance = null;
 
@@ -1073,6 +1085,7 @@
                     if (pickerValue !== closest.dataset.value) {
                          pickerValue = parseFloat(closest.dataset.value);
                          playTick();
+                         triggerHaptic(8); // Haptic feedback on scroll
                     }
                 }
             };
@@ -1347,6 +1360,12 @@
                 let val = type === 'float' ? parseFloat(e.target.value) : parseInt(e.target.value);
                 if (isNaN(val)) val = 0;
                 state[key] = val;
+                
+                // Add haptic feedback for range sliders
+                if (el.type === 'range') {
+                    triggerHaptic(5);
+                }
+                
                 updateUI();
             });
         };
@@ -1422,6 +1441,14 @@
             window.addEventListener('scroll', revealOnScroll);
             revealOnScroll(); // Trigger once on load
         }
+        
+        // Add global haptic listeners for inputs
+        function setupGlobalHaptics() {
+            // Attach to all inputs for focus feedback
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('focus', () => triggerHaptic(10));
+            });
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -1430,6 +1457,7 @@
             setupEditableProperty();
             setupScrollToaster();
             setupRevealAnimations();
+            setupGlobalHaptics();
             initVisitorCounter(); // Start the visitor count
             
             bind('input-share-percentage', 'sharePercentage', 'int');
